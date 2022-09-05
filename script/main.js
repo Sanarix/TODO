@@ -5,44 +5,46 @@ const buttonAdd = document.querySelector('.btn-add');
 const list = document.querySelector('.list');
 const buttonRemove = document.querySelector('.btn-remove');
 
-function createTask(text) {
-	const div = `
-	<div class="task">
-		<div class="text">${text}</div>
-		<div class="buttons">
-			<input class="btn-check" type="checkbox">
-			<button class="btn-remove">X</button>
-		</div>
-	</div>
-	`
-	return div;
+function addTask(input) {
+  const task = document.createElement("div");
+  const div = document.createElement("div");
+  const checkbox = document.createElement("i");
+  const trash = document.createElement("i");
+  const p = document.createElement("p");
+	const buttonsContainer = div;
+	buttonsContainer.className = "buttons";
+
+  task.className = "task";
+	p.className = "text";
+  p.textContent = input;
+	buttonsContainer.append(checkbox);
+	buttonsContainer.append(trash);
+  task.append(p);
+  task.append(buttonsContainer);
+
+  list.append(task);
+  textInput.value = "";
+
+	checkbox.className = "fas fa-check-square checkbox";
+  checkbox.addEventListener("click", () => {
+    checkbox.style.color = "limegreen";
+  })
+
+  trash.className = "fas fa-trash trash";
+  trash.addEventListener("click", () => {
+		task.classList.add('deleted');
+		setTimeout(()=>{task.remove();}, 300)
+  })
 }
 
-function addTask() {
-	let task = createTask(textInput.value);
-	list.innerHTML += task;
-}
+textInput.addEventListener("keydown", (event) => {
+  if(event.key === "Enter" && textInput.value){
+    addTask(textInput.value);
+  }
+});
 
-function clearInput() {
-	textInput.value = '';
-}
-textInput.addEventListener('keydown', e => {
-	if(e.key == 'Enter' && textInput.value) {
-		addTask();
-		clearInput();
-	}
-})
-
-buttonAdd.addEventListener('click', () => {
+buttonAdd.addEventListener("click", () => {
 	if(textInput.value) {
-		addTask();
-		clearInput();
+		addTask(textInput.value);
 	}
-	return
-})
-
-list.addEventListener('click', (e) => {
-	if(e.target.className == 'btn-remove') {
-		e.target.closest('.task').remove();
-	}
-})
+});

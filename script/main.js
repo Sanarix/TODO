@@ -25,7 +25,7 @@ function addTask(input) {
   list.append(task);
   textInput.value = "";
 
-	checkbox.className = "fas fa-check-square checkbox";
+	checkbox.className = "fa fa-check-square checkbox";
   checkbox.addEventListener("click", () => {
     checkbox.style.color = "limegreen";
   })

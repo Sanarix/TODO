@@ -155,7 +155,7 @@ main {
   main{width: 95%;}
   
   .header{
-    padding: 20px;
+    padding: 0px;
     align-items: center;
     flex-direction: column;
 		margin-bottom: 2vh;

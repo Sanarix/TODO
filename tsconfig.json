@@ -1,0 +1,10 @@
+{
+	"compillerOptions": {
+		"target": "esnext",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"plugins": [
+			{"name" : "typescript-plugin-css-modules"}
+		]
+	}
+}

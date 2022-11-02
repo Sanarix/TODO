@@ -1,6 +1,6 @@
 {
 	"compillerOptions": {
-		"target": "esnext",
+		"target": "es6",
 		"module": "ESNext",
 		"moduleResolution": "node",
 		"plugins": [
